@@ -63,7 +63,15 @@ auto addVec(cvec a, cvec b, vec c) {
 	}
 }
 
+// Scale Vector
+auto scaleVec(vec a, int s) {
+	for (auto& x : a) {
+		x = x * s;
+	}
+}
+
 void runTestsA() {
+	int x;
 	vector<int> a, b, c;
 	doAssign(a);
 	doAssign(b);
@@ -79,6 +87,11 @@ void runTestsA() {
 
 	addVec(a, b, c);
 	showVec(c);
+
+	cout << "Give Scalar" << endl;
+	cin >> x;
+	scaleVec(a, x);
+	showVec(a);
 
 }
 
