@@ -42,8 +42,28 @@ auto doCopy(vector<int> a, vector<int>& b) {
 }
 
 
-void runTestsA() {
+// Show Vector
+auto showVec(vector<int> a) {
+	cout << "[ ";
+	for (auto x : a) {
+		cout << x << " ";
+	}
+	cout << "]";
+}
 
+void runTestsA() {
+	vector<int> a, b, c;
+	doAssign(a);
+	doAssign(b);
+
+	showVec(a);
+	showVec(b);
+	
+	cout << checkEquality(a, b);
+	
+	c.resize(a.size());
+	doCopy(a, c);
+	showVec(c);
 }
 
 int main() {
