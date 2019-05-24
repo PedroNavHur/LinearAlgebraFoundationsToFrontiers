@@ -4,9 +4,12 @@
 
 using namespace std;
 
+using vec = vector<int> &;
+using cvec = const vector<int> &;
+
 // Check for equality exercise
 // We assume they have the same length.
-auto checkEquality(vector<int> a, vector<int> b) {
+auto checkEquality(cvec a, cvec b) {
 	auto length = a.size();
 	bool isEqual = true;
 
@@ -20,7 +23,7 @@ auto checkEquality(vector<int> a, vector<int> b) {
 }
 
 // Assign to a vector
-auto doAssign(vector<int>& a) {
+auto doAssign(vec a) {
 	
 	int n, x;
 	cout << "how many assigments?" << endl;
@@ -33,7 +36,7 @@ auto doAssign(vector<int>& a) {
 }
 
 // Copy a vector
-auto doCopy(vector<int> a, vector<int>& b) {
+auto doCopy(cvec a, vec b) {
 	size_t length = a.size();
 
 	for (auto i = 0; i < length; i++) {
@@ -43,12 +46,21 @@ auto doCopy(vector<int> a, vector<int>& b) {
 
 
 // Show Vector
-auto showVec(vector<int> a) {
+auto showVec(cvec a) {
 	cout << "[ ";
 	for (auto x : a) {
 		cout << x << " ";
 	}
-	cout << "]";
+	cout << "]" << endl;
+}
+
+// Add Vectors
+auto addVec(cvec a, cvec b, vec c) {
+	auto length = a.size();
+
+	for (auto i = 0; i < length; i++) {
+		c[i] = a[i] + b[i];
+	}
 }
 
 void runTestsA() {
@@ -59,11 +71,15 @@ void runTestsA() {
 	showVec(a);
 	showVec(b);
 	
-	cout << checkEquality(a, b);
+	cout << checkEquality(a, b) << endl;
 	
 	c.resize(a.size());
 	doCopy(a, c);
 	showVec(c);
+
+	addVec(a, b, c);
+	showVec(c);
+
 }
 
 int main() {
