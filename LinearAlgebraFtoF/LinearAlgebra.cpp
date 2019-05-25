@@ -70,28 +70,43 @@ auto scaleVec(vec a, int s) {
 	}
 }
 
+// Vector Substraction
+auto subVec(vec a, vec b, vec c) {
+	scaleVec(b, -1);
+	addVec(a, b, c);
+}
+
 void runTestsA() {
 	int x;
 	vector<int> a, b, c;
+	
+	cout << "Testing Assigment" << endl;
 	doAssign(a);
 	doAssign(b);
-
 	showVec(a);
 	showVec(b);
 	
+	cout << "Testing Equality" << endl;
 	cout << checkEquality(a, b) << endl;
 	
+	cout << "Testing Copy" << endl;
 	c.resize(a.size());
 	doCopy(a, c);
 	showVec(c);
 
+	cout << "Testing Addition" << endl;
 	addVec(a, b, c);
 	showVec(c);
 
+	cout << "Testing Scaling" << endl;
 	cout << "Give Scalar" << endl;
 	cin >> x;
 	scaleVec(a, x);
 	showVec(a);
+
+	cout << "Testing Substraction" << endl;
+	subVec(a, b, c);
+	showVec(c);
 
 }
 
