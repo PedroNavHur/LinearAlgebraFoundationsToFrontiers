@@ -4,6 +4,7 @@
 
 using namespace std;
 
+using nvec = vector<int>;
 using vec = vector<int> &;
 using cvec = const vector<int> &;
 
@@ -71,9 +72,17 @@ auto scaleVec(vec a, int s) {
 }
 
 // Vector Substraction
-auto subVec(vec a, vec b, vec c) {
+auto subVec(vec a, nvec b, vec c) {
 	scaleVec(b, -1);
 	addVec(a, b, c);
+}
+
+auto dotPro(vec a, vec b, vec c) {
+	auto length = a.size();
+
+	for (auto i = 0; i < length; i++){
+		c[i] = a[i] * b[i];
+	}
 }
 
 void runTestsA() {
@@ -106,6 +115,10 @@ void runTestsA() {
 
 	cout << "Testing Substraction" << endl;
 	subVec(a, b, c);
+	showVec(c);
+
+	cout << "Testing Dot Product" << endl;
+	dotPro(a, b, c);
 	showVec(c);
 
 }
